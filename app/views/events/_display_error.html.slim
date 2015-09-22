@@ -1,0 +1,5 @@
+- if form_object.errors[:base].any?
+  - form_object.errors[:base].each do |msg|
+    .alert.alert-danger
+      button type="button" class="close-cross fa fa-times" data-dismiss="alert"
+      span = msg

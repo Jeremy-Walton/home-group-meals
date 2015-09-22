@@ -1,0 +1,9 @@
+= simple_form_for [@event, @item], remote: true, wrapper: :horizontal_input_group, html: {role: :form, 'data-model' => 'item', 'data-type' => :script } do |f|
+  .modal-body
+    = f.input :name, wrapper: :horizontal_input_group do
+      span class="input-group-addon" Name
+      = f.input_field :name, placeholder: 'Enter an Item', class: "form-control"
+
+  .modal-footer
+    button.btn.btn-default type="button" data-dismiss="modal" Cancel
+    = button_tag 'OK', class: 'btn btn-primary'

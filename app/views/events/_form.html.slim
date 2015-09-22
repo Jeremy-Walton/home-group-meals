@@ -1,0 +1,17 @@
+= simple_form_for @event, remote: true, wrapper: :horizontal_input_group, html: {role: :form, 'data-model' => 'event', 'data-type' => :script } do |f|
+  .modal-body
+    = render 'display_error', form_object: f.object
+
+    = f.input :name, wrapper: :horizontal_input_group do
+      span class="input-group-addon" Name
+      = f.input_field :name, placeholder: 'Enter a Name', class: "form-control"
+    = f.input :date, wrapper: :horizontal_input_group do
+      span class="input-group-addon" Date
+      = f.input_field :date, class: "form-control"
+    = f.input :description, wrapper: :horizontal_input_group do
+      span class="input-group-addon" Description
+      = f.input_field :description, placeholder: 'Enter a Description', class: "form-control"
+
+  .modal-footer
+    button.btn.btn-default type="button" data-dismiss="modal" Cancel
+    = button_tag 'OK', class: 'btn btn-primary'

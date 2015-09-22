@@ -1,0 +1,26 @@
+.container
+  h1.text-center Events
+  = link_to 'Create Event', [:new, :event], class: 'btn btn-primary pull-right', data: { toggle: "modal", target: "#ajax-modal" }, remote: true
+
+.events-index.well.row
+  - @events.each do |event|
+    .col-sm-4
+      .panel.panel-primary
+        .panel-heading
+          h3.panel-title.pull-left
+            = event.user.email
+          - if event.user == current_user
+            .pull-right
+              = link_to 'Edit', [:edit, event],  class: 'label label-success', data: { toggle: "modal", target: "#ajax-modal" }, remote: true
+              = link_to 'Delete', [event], method: :delete,  class: 'label label-danger', data: { confirm: "Are you sure you want to delete #{event.name}?" }
+        .panel-body
+          = event.name
+          .panel-body
+            = event.description
+        .panel-footer
+          .pull-left = event.date
+          .pull-right
+            - if event.user == current_user
+              = link_to 'View / Add Items', [event]
+            - else
+              = link_to 'View', [event]

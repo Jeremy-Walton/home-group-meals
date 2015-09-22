@@ -1,0 +1,20 @@
+.container
+  h2 Sign in
+
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .form-inputs
+      = f.input :login, wrapper: :horizontal_input_group do
+        span class="input-group-addon" Login
+        = f.input_field :login, placeholder: 'Enter your Username or Email', class: "form-control", autofocus: true
+
+      = f.input :password, wrapper: :horizontal_input_group do
+        span class="input-group-addon" Password
+        = f.input_field :password, placeholder: 'Enter your Password', class: "form-control"
+
+      .input-group
+        = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+
+    .form-actions
+      = f.button :submit, "Sign in", class: 'btn btn-primary'
+
+  = render "users/shared/links"

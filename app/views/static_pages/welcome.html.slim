@@ -1,0 +1,7 @@
+- if user_signed_in?
+  h1.text-center
+    | Welcome 
+    = current_user.email
+  h2.text-center = link_to 'Events', events_path
+- else
+  h1.text-center Please sign up or in

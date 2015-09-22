@@ -1,0 +1,36 @@
+doctype html
+
+html
+  head
+    title Homegroup Meals
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+  body
+    nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          a.navbar-brand href="/" = image_tag 'homegroup-logo.png', alt: 'Brand', class: 'navbar-brand-image'
+          button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to 'Homegroup Meals', main_app.root_path, class: 'navbar-brand'
+
+        .collapse.navbar-collapse#bs-example-navbar-collapse-1.navbar-right
+          ul.nav.navbar-nav
+            - if user_signed_in?
+              li = link_to 'Events', events_path 
+              li = link_to current_user.email, main_app.edit_user_registration_path
+              li = link_to "Sign out", main_app.destroy_user_session_path, :method => :delete
+            - else
+              li = link_to "Sign in", new_user_session_path
+              li = link_to "Sign up", new_user_registration_path
+    - flash.each do |key, value|
+        div class="alert alert-#{key}"
+          = value
+    = yield
+
+    = render 'layouts/modal'

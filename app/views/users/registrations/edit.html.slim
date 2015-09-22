@@ -1,0 +1,49 @@
+.container
+  h2
+    | Edit 
+    = resource_name.to_s.humanize
+
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    = f.error_notification
+
+    .form-inputs
+      = f.input :username, wrapper: :horizontal_input_group do
+        span class="input-group-addon" Username
+        = f.input_field :username, placeholder: 'Enter a Username', class: "form-control", required: true, autofocus: true
+
+      = f.input :email, wrapper: :horizontal_input_group do
+        span class="input-group-addon" Email
+        = f.input_field :email, placeholder: 'Enter your Email', class: "form-control", required: true
+
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        p
+          | Currently waiting confirmation for: 
+          = resource.unconfirmed_email
+
+      = f.input :password, wrapper: :horizontal_input_group do
+        span class="input-group-addon" Password
+        = f.input_field :password, placeholder: 'Set a Password', class: "form-control", autocomplete: "off", required: false
+        span class="input-group-addon"
+          | leave it blank if you don't want to change it
+
+      = f.input :password_confirmation, wrapper: :horizontal_input_group do
+        span class="input-group-addon" Password Confirmation
+        = f.input_field :password_confirmation, placeholder: 'Re-enter the Password', class: "form-control", required: false
+        span class="input-group-addon"
+          | leave it blank if you don't want to change it
+
+      = f.input :current_password, wrapper: :horizontal_input_group do
+        span class="input-group-addon" Current Password
+        = f.input_field :password_confirmation, placeholder: 'Enter your Password', class: "form-control", required: true
+        span class="input-group-addon" We need your current password to confirm your changes
+
+    .form-actions
+      = f.button :submit, "Update", class: 'btn btn-primary'
+
+  h3 Cancel my account
+
+  p
+    | Unhappy? 
+    = link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
+
+  = link_to "Back", :back, class: 'btn-btn-default'
