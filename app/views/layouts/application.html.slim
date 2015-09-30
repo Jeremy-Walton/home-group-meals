@@ -8,6 +8,9 @@ html
     = csrf_meta_tags
     meta name="viewport" content="width=device-width, initial-scale=1.0"
   body
+    - flash.each do |key, value|
+        div class="alert alert-#{key}"
+          = value
     nav.navbar.navbar-default
       .container-fluid
         .navbar-header
@@ -28,9 +31,6 @@ html
             - else
               li = link_to "Sign in", new_user_session_path
               li = link_to "Sign up", new_user_registration_path
-    - flash.each do |key, value|
-        div class="alert alert-#{key}"
-          = value
     = yield
 
     = render 'layouts/modal'

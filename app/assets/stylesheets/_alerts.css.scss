@@ -1,0 +1,21 @@
+.alert {
+  z-index: 100;
+  background-color: #eee;
+  text-align: center;
+  width: 250px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  margin-left: -125px;
+  border: 1px solid;
+  border-radius: 0;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.alert-notice {
+  background-color: #0f9d58;
+}
+
+.alert-danger {
+  background-color: #db4437;
+}

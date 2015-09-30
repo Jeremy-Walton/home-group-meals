@@ -17,3 +17,11 @@
 //= require_tree .
 
 $('#new-event').modal();
+
+$(document).ready(function() {
+  window.setTimeout(function () {
+    $('.alert').fadeTo(1500, 0, function () {
+      $(this).hide();
+    });
+  }, 7000);
+});

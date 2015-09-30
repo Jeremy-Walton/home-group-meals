@@ -5,7 +5,13 @@
 @import 'bootstrap_cerulean_theme';
 @import 'events';
 @import 'items';
+@import 'alerts';
 
 .navbar-brand-image {
   height: 25px;
+}
+
+.navbar {
+  border-radius: 0;
+  border: none;
 }
