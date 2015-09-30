@@ -13,10 +13,7 @@ Rails.application.routes.draw do
   root 'events#index'
 
   resources :events do
-    resources :items do
-      # post :set_bringer, on: :member
-      # post :unset_bringer, on: :member
-    end
+    resources :items
   end
 
   # Example of regular route:
