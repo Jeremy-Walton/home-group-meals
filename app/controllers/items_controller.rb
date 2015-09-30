@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-    before_filter :setup_instance_variable
+  skip_before_action :authenticate_user!, only: [:edit, :update]
+  before_filter :setup_instance_variable
 
   def new
     @item = @event.items.build
@@ -7,6 +8,28 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to [@event] }
       format.js { render 'item_modal' }
+    end
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+
+    respond_to do |format|
+      format.html { redirect_to [@event, @item] }
+      format.js { render 'item_edit_modal' }
+    end
+  end
+
+  def update
+    @item = Item.find(params[:id])
+
+    respond_to do |format|
+      if @item.update_attributes edit_params_for_item
+        flash.notice = "#{@item.name} Saved"
+        format.js { render inline: "location.reload();" }
+      else
+        format.js { render 'item_edit_errors' }
+      end
     end
   end
 
@@ -58,6 +81,10 @@ class ItemsController < ApplicationController
 
   def params_for_item
     params.require(:item).permit(:event_id, :name)
+  end
+
+  def edit_params_for_item
+    params.require(:item).permit(:bringer)
   end
 
   def setup_instance_variable

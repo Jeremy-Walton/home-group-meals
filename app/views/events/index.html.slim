@@ -1,6 +1,7 @@
 .container
   h1.text-center Events
-  = link_to 'Create Event', [:new, :event], class: 'btn btn-primary pull-right', data: { toggle: "modal", target: "#ajax-modal" }, remote: true
+  - if user_signed_in?
+    = link_to 'Create Event', [:new, :event], class: 'btn btn-primary pull-right', data: { toggle: "modal", target: "#ajax-modal" }, remote: true
 
 .events-index.well.row
   - @events.each do |event|
@@ -24,3 +25,5 @@
               = link_to 'View / Add Items', [event]
             - else
               = link_to 'View', [event]
+  - if !user_signed_in?
+    h5.text-center Sign up or sign in to set up events

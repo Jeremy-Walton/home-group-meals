@@ -225,3 +225,6 @@ DEPENDENCIES
   simple_form
   slim-rails
   spinach-rails
+
+BUNDLED WITH
+   1.10.3

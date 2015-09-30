@@ -10,12 +10,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#welcome'
+  root 'events#index'
 
   resources :events do
     resources :items do
-      post :set_bringer, on: :member
-      post :unset_bringer, on: :member
+      # post :set_bringer, on: :member
+      # post :unset_bringer, on: :member
     end
   end
 

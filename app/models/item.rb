@@ -5,9 +5,8 @@ class Item < ActiveRecord::Base
   validates :name, presence: :true
 
   def whos_bringing_it
-    if bringer
-      user = User.find(bringer)
-      user.username || user.email
+    if bringer && bringer != ''
+      bringer
     else
       'No on has claimed this item'
     end

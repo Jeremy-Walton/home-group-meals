@@ -11,13 +11,11 @@
       h2 Items to Bring
       - @event.items.order(:created_at).each do |item|
         .row.item-row
-          .col-sm-4 = item.name
-          .col-sm-4 = item.whos_bringing_it
-          .col-sm-3
-              - if current_user.id == item.bringer
-                = button_to "I Don't Got It", [:unset_bringer, @event, item], class: 'btn btn-primary btn-xs pull-right'
-              - elsif item.bringer.blank?
-                = button_to "I Got It", [:set_bringer, @event, item], class: 'btn btn-primary btn-xs pull-right'
+          .col-sm-5 = item.name
+          .col-sm-6
+            = item.whos_bringing_it
+            |  
+            = link_to 'Edit', [:edit, @event, item], data: { toggle: "modal", target: "#ajax-modal" }, remote: true
           .col-sm-1
               - if current_user == @event.user
                 = link_to 'Delete', [@event, item], method: :delete,  class: 'btn btn-danger btn-xs pull-right', data: { confirm: "Are you sure you want to delete #{item.name}?" }
