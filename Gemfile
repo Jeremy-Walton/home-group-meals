@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.0'
 
 gem 'bootstrap-sass'
+gem 'bootstrap-modal-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'pg'

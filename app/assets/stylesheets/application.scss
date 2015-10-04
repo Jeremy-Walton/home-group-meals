@@ -1,4 +1,5 @@
 @import 'bootstrap';
+@import 'bootstrap-modal';
 // @import 'bootstrap_united_theme';
 // @import 'bootstrap_darkly_theme';
 // @import 'bootstrap_flatly_theme';
@@ -14,4 +15,8 @@
 .navbar {
   border-radius: 0;
   border: none;
+}
+
+.modal-backdrop, .modal-backdrop.fade.in {
+  background: $modal-backdrop-bg;
 }
