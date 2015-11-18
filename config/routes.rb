@@ -16,6 +16,15 @@ Rails.application.routes.draw do
     resources :items
   end
 
+  #api
+  namespace :api do
+    namespace :v1 do
+      resources :events, only: [:index, :show]
+      # resources :users, only: [:index, :create, :show, :update, :destroy]
+      # resources :microposts, only: [:index, :create, :show, :update, :destroy]
+    end
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
